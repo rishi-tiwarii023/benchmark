@@ -14,3 +14,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Task Manager", lifespan=lifespan)
 app.include_router(tasks_router)
+
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
