@@ -1,9 +1,12 @@
+import os
 from collections.abc import Generator
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./tasks.db"
+SQLALCHEMY_DATABASE_URL = os.environ.get(
+    "SQLALCHEMY_DATABASE_URL", "sqlite:///./tasks.db"
+)
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
